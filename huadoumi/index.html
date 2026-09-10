@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花都迷情 - 都市情感故事与浪漫文学精选</title>
+    <meta name="description" content="花都迷情，一个专注于都市情感故事与浪漫文学的平台。这里有动人的爱情故事、都市情感小说、情感专栏与阅读推荐，带你走进花都的迷情世界。">
+    <meta name="keywords" content="花都迷情,都市情感,爱情故事,情感文学,浪漫小说,都市小说,情感专栏,阅读推荐">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: #faf7f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .site-header {
+            background: linear-gradient(135deg, #2d1b1b 0%, #4a2c2a 100%);
+            color: #f5e6d3;
+            padding: 18px 0;
+            border-bottom: 3px solid #c9a87c;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #f5e6d3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            line-height: 1.2;
+        }
+        .logo-text p {
+            font-size: 0.85rem;
+            color: #d4b896;
+            letter-spacing: 1px;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #f5e6d3;
+            font-size: 0.95rem;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            border-bottom-color: #c9a87c;
+            color: #fff;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, #fff 0%, #faf0e8 100%);
+            padding: 60px 0 50px;
+            border-bottom: 1px solid #e8ddd0;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h2 {
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: #4a2c2a;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #6b5b4e;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .hero-tags span {
+            background: #fff;
+            border: 1px solid #d4b896;
+            color: #6b4f3a;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Section styling */
+        .section {
+            padding: 50px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #3d2622;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        .section-title h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: #c9a87c;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #8a7a6a;
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        /* Featured stories */
+        .featured-stories {
+            background: #fff;
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .story-card {
+            background: #faf7f5;
+            border: 1px solid #e8ddd0;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            border-color: #c9a87c;
+        }
+        .story-card .story-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .story-card h4 {
+            font-size: 1.15rem;
+            color: #3d2622;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .story-card p {
+            font-size: 0.9rem;
+            color: #6b5b4e;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .story-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #9a8a7a;
+            border-top: 1px solid #e8ddd0;
+            padding-top: 12px;
+        }
+        .story-meta .tag {
+            background: #f0e6dc;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: #6b4f3a;
+        }
+
+        /* Categories */
+        .categories {
+            background: #faf7f5;
+        }
+        .cat-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .cat-item {
+            background: #fff;
+            border: 1px solid #e8ddd0;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .cat-item:hover {
+            background: #f0e6dc;
+            border-color: #c9a87c;
+        }
+        .cat-item .cat-icon {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .cat-item h4 {
+            font-size: 1rem;
+            color: #3d2622;
+            margin-bottom: 5px;
+        }
+        .cat-item p {
+            font-size: 0.85rem;
+            color: #8a7a6a;
+        }
+
+        /* Latest updates */
+        .latest-updates {
+            background: #fff;
+        }
+        .update-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .update-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #eee5dc;
+            transition: all 0.3s;
+        }
+        .update-item:last-child {
+            border-bottom: none;
+        }
+        .update-item:hover {
+            padding-left: 10px;
+            background: #faf7f5;
+        }
+        .update-date {
+            min-width: 80px;
+            font-size: 0.85rem;
+            color: #9a8a7a;
+        }
+        .update-title {
+            flex: 1;
+            font-size: 1rem;
+            color: #3d2622;
+        }
+        .update-status {
+            font-size: 0.75rem;
+            background: #f0e6dc;
+            padding: 2px 12px;
+            border-radius: 20px;
+            color: #6b4f3a;
+        }
+
+        /* Reading guide */
+        .reading-guide {
+            background: #faf7f5;
+        }
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .guide-card {
+            background: #fff;
+            border: 1px solid #e8ddd0;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+        }
+        .guide-card .guide-num {
+            font-size: 2.5rem;
+            color: #c9a87c;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        .guide-card h4 {
+            font-size: 1.1rem;
+            color: #3d2622;
+            margin-bottom: 12px;
+        }
+        .guide-card p {
+            font-size: 0.9rem;
+            color: #6b5b4e;
+            line-height: 1.7;
+        }
+
+        /* FAQ */
+        .faq {
+            background: #fff;
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #eee5dc;
+            padding: 20px 0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #3d2622;
+            font-weight: 500;
+        }
+        .faq-question .toggle {
+            font-size: 1.4rem;
+            color: #c9a87c;
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            display: none;
+            padding-top: 15px;
+            color: #6b5b4e;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+        .faq-item.open .toggle {
+            transform: rotate(45deg);
+        }
+
+        /* About / CTA */
+        .about-section {
+            background: linear-gradient(135deg, #2d1b1b 0%, #4a2c2a 100%);
+            color: #f5e6d3;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .about-section h3 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #f5e6d3;
+        }
+        .about-section p {
+            max-width: 700px;
+            margin: 0 auto 25px;
+            color: #d4b896;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            background: #c9a87c;
+            color: #2d1b1b;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            border: 1px solid #c9a87c;
+        }
+        .btn:hover {
+            background: transparent;
+            color: #c9a87c;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #2d1b1b;
+            color: #a08e7e;
+            padding: 40px 0 20px;
+            border-top: 3px solid #c9a87c;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #4a3a30;
+            margin-bottom: 20px;
+        }
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-col h4 {
+            color: #f5e6d3;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .footer-col ul li {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        .footer-col a:hover {
+            color: #f5e6d3;
+        }
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            padding-top: 20px;
+            color: #7a6a5a;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .story-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cat-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .guide-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .main-nav ul {
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            .hero {
+                padding: 40px 0;
+            }
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            .cat-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .section {
+                padding: 35px 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .cat-list {
+                grid-template-columns: 1fr;
+            }
+            .hero-tags span {
+                padding: 4px 12px;
+                font-size: 0.8rem;
+            }
+            .update-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">🌸</div>
+            <div class="logo-text">
+                <h1>花都迷情</h1>
+                <p>都市情感 · 浪漫文学集</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">故事精选</a></li>
+                <li><a href="#">情感专栏</a></li>
+                <li><a href="#">阅读指南</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero 首屏 -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>走进花都，迷情故事</h2>
+            <p>在繁华都市的每一个角落，都藏着动人的情感故事。<br>花都迷情，为你讲述那些关于爱、遇见与成长的真实与虚构交织的篇章。</p>
+            <div class="hero-tags">
+                <span>都市情感</span>
+                <span>爱情小说</span>
+                <span>浪漫文学</span>
+                <span>情感专栏</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选故事 -->
+    <section class="section featured-stories">
+        <div class="container">
+            <div class="section-title">
+                <h3>精选故事</h3>
+                <p class="section-subtitle">每一段文字，都是一次心动</p>
+            </div>
+            <div class="story-grid">
+                <article class="story-card">
+                    <div class="story-icon">💌</div>
+                    <h4>花都夜未眠</h4>
+                    <p>深夜的咖啡馆，两个因城市而相遇的灵魂，在迷离的灯光下，开始了一段关于逃避与寻找的故事。</p>
+                    <div class="story-meta">
+                        <span class="tag">连载中</span>
+                        <span>更新于 3天前</span>
+                    </div>
+                </article>
+                <article class="story-card">
+                    <div class="story-icon">🌹</div>
+                    <h4>迷情旧梦</h4>
+                    <p>一场错过的爱情，在多年后的花都重逢。当记忆与现实交织，他们能否找回当年的心动？</p>
+                    <div class="story-meta">
+                        <span class="tag">完结</span>
+                        <span>更新于 1周前</span>
+                    </div>
+                </article>
+                <article class="story-card">
+                    <div class="story-icon">🏙️</div>
+                    <h4>都市情书</h4>
+                    <p>一封从未寄出的情书，记录了一个人在花都的孤独与热爱。献给所有在都市中寻找真心的你。</p>
+                    <div class="story-meta">
+                        <span class="tag">短篇</span>
+                        <span>更新于 5天前</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 故事分类 -->
+    <section class="section categories">
+        <div class="container">
+            <div class="section-title">
+                <h3>故事分类</h3>
+                <p class="section-subtitle">找到你想读的那一种情感</p>
+            </div>
+            <div class="cat-list">
+                <div class="cat-item">
+                    <div class="cat-icon">💞</div>
+                    <h4>甜蜜恋爱</h4>
+                    <p>心动与甜蜜的日常</p>
+                </div>
+                <div class="cat-item">
+                    <div class="cat-icon">🌧️</div>
+                    <h4>虐心情感</h4>
+                    <p>那些让人流泪的故事</p>
+                </div>
+                <div class="cat-item">
+                    <div class="cat-icon">✨</div>
+                    <h4>破镜重圆</h4>
+                    <p>错过后的再次相遇</p>
+                </div>
+                <div class="cat-item">
+                    <div class="cat-icon">🌆</div>
+                    <h4>都市成长</h4>
+                    <p>在爱中学会长大</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section class="section latest-updates">
+        <div class="container">
+            <div class="section-title">
+                <h3>最新更新</h3>
+                <p class="section-subtitle">不错过任何一个精彩瞬间</p>
+            </div>
+            <div class="update-list">
+                <div class="update-item">
+                    <span class="update-date">2025-02-14</span>
+                    <span class="update-title">《花都夜未眠》第十七章：告白</span>
+                    <span class="update-status">连载中</span>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">2025-02-13</span>
+                    <span class="update-title">《迷情旧梦》番外篇：那年花开</span>
+                    <span class="update-status">番外</span>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">2025-02-12</span>
+                    <span class="update-title">《都市情书》完整版上线</span>
+                    <span class="update-status">完结</span>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">2025-02-11</span>
+                    <span class="update-title">新连载预告：《转角遇到爱》</span>
+                    <span class="update-status">预告</span>
+                </div>
+                <div class="update-item">
+                    <span class="update-date">2025-02-10</span>
+                    <span class="update-title">情感专栏：爱情里的安全感</span>
+                    <span class="update-status">专栏</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 阅读指南 -->
+    <section class="section reading-guide">
+        <div class="container">
+            <div class="section-title">
+                <h3>阅读指南</h3>
+                <p class="section-subtitle">如何更好地享受花都迷情的故事</p>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-num">01</div>
+                    <h4>从推荐开始</h4>
+                    <p>如果你还不确定想读什么，可以从首页的精选故事开始，每一篇都经过编辑团队精心挑选，质量有保证。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-num">02</div>
+                    <h4>探索分类</h4>
+                    <p>根据自己当下的心情选择分类：想感受甜蜜，可以阅读恋爱故事；想要深刻，不妨试试虐心情感。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-num">03</div>
+                    <h4>追更连载</h4>
+                    <p>喜欢的连载故事记得常回来看更新，我们会在故事更新后第一时间为你呈现最新章节，不错过任何情节。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq">
+        <div class="container">
+            <div class="section-title">
+                <h3>常见问题</h3>
+                <p class="section-subtitle">你可能想了解的</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item open">
+                    <div class="faq-question">
+                        <span>花都迷情的故事是真实的吗？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        花都迷情是一个文学创作平台，大部分故事为作者原创的虚构作品，源于生活的灵感，但情节和人物均为艺术加工。我们也会不定期发布一些真实情感故事投稿，内容会明确标注。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>如何投稿自己的情感故事？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        我们欢迎所有热爱写作的朋友投稿。请将你的原创故事发送至我们的官方邮箱，并在邮件中注明“花都迷情投稿”。编辑团队会认真阅读每一份来稿，并在7个工作日内给予回复。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>阅读这些故事需要付费吗？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        目前花都迷情的所有内容均免费阅读，我们希望通过文字传递情感与温度。未来若推出付费内容，会提前公告并尊重读者的选择。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>多久更新一次故事？</span>
+                        <span class="toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        连载中的故事通常每周更新1-2章，完结故事和短篇会不定期上新。你可以关注首页的“最新更新”板块，第一时间看到新内容。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 / CTA -->
+    <section class="section about-section">
+        <div class="container">
+            <h3>关于花都迷情</h3>
+            <p>花都迷情诞生于对都市情感的细腻观察。我们相信，在钢筋水泥的城市里，每一颗心都需要温柔的故事来慰藉。这里汇集了众多优秀作者的原创情感文学，希望你能在这里找到共鸣，找到属于你的那一段迷情时光。</p>
+            <a href="#" class="btn">开始阅读</a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>花都迷情</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">编辑团队</a></li>
+                    <li><a href="#">联系邮箱</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>内容分类</h4>
+                <ul>
+                    <li><a href="#">甜蜜恋爱</a></li>
+                    <li><a href="#">虐心情感</a></li>
+                    <li><a href="#">破镜重圆</a></li>
+                    <li><a href="#">都市成长</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>读者服务</h4>
+                <ul>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">阅读建议</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2025 花都迷情 · 用心讲述都市情感故事 · 本站内容均为原创或获得授权发布</p>
+    </div>
+</footer>
+
+<script>
+    // FAQ 交互
+    document.querySelectorAll('.faq-question').forEach(function(question) {
+        question.addEventListener('click', function() {
+            var item = this.parentElement;
+            item.classList.toggle('open');
+        });
+    });
+</script>
+</body>
+              </html>
